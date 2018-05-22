@@ -12,7 +12,7 @@ function Modal(config) {
 
   const self = this;
 
-  this.initialize = function() {
+  this.initializeModal = function() {
     if (typeof(config) == 'undefined') {
       _callButtonsData =  undefined;
     } else if (typeof(config) == 'string'){ 
@@ -31,24 +31,33 @@ function Modal(config) {
     if (_callButtonsData == null || _callButtonsData === undefined) {
       error('undefined');
     } else {
-
       _callButtons.forEach( function(element, index) {
-        element.onclick = configModal.bind(this, event);
+        element.onclick = self.toggleModal.bind(this, event);
       });
 
-      if (typeof(_modalClose) !== 'string'){ 
-        _modalClose.forEach( function(element, index) {
-          document.querySelector(element).onclick = configModal.bind(this, event);
-        });
-      } else {
-        document.querySelector(_modalClose).onclick = configModal.bind(this, event);
-      }
-
-      if(_modal !== document.querySelector(_modalBody)){
-        _modal.onclick = configModal.bind(this, event);
-        document.querySelector(_modalBody).onclick = accentModal.bind(this, event);
-      }
+      setEvents.call(_modal);
     }
+  }
+
+/*   function parse(){
+
+  } */
+
+  function setEvents(){
+    let container = this.querySelector(_modalBody);
+    let modalClose = this.querySelector(_modalClose);
+
+    this.addEventListener('click', e => {
+      if (e.target == modalClose){
+        self.hide();
+      } else if (e.target == this && container){
+        self.hide();
+      } else if (e.target == this && !container){
+        e.preventDefault()
+      } else if (e.target == container){
+        e.preventDefault()
+      }
+    })
   }
 
   function error(type){
@@ -60,9 +69,6 @@ function Modal(config) {
 
   function findModal(){
     let modal;
-    /* document.querySelectorAll(_modalClass).forEach( function(element, index) {
-      if(document.querySelector(_callButtonsData).className.indexOf(element.getAttribute('data-call'))) modal = element;
-    }); */
     modal = document.querySelector(_modalClass+'[data-call='+_callButtonsData.split('.')[1]+']')
     return modal;
   }
@@ -71,11 +77,8 @@ function Modal(config) {
     self.isShow = !self.isShow;
   }
 
-  function accentModal() {
-    event.stopPropagation();
-  }
 
-  function configModal() {
+  self.toggleModal = () => {
     event.preventDefault();
     if(!self.isShow){
       self.show();
@@ -99,7 +102,5 @@ function Modal(config) {
 
 
 
-  this.initialize();
+  this.initializeModal();
 }
-
-
