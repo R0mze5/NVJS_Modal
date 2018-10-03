@@ -1,34 +1,247 @@
 /* **************************** containers **************************** */
 
 .section{
-
+	@media @tablet{
+        --padding: 30px;
+        padding-left: var(--padding);
+        padding-right: var(--padding);
+    }
 }
+
 
 .wrapper{
-	padding: 0 10%;
-	max-width: 1180px;
-	margin: 0 auto;
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+    --padding: 16px;
+    padding-left: var(--padding);
+    padding-right: var(--padding);
 
-	@media @tablet{
-		padding: 0 27px;
-	}
+    @media @tablet{
+        --padding: 0;
+        // max-width: 946px;
+    }
+
+    @media @desktop{
+        // max-width: 1040px;
+    }
+
+    @media @large{
+        max-width: 1640px;
+    }
 }
+
+
+.title{
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 1.4;
+    font-family: var(--header_font);
+    color: inherit;
+
+    @media @tablet{
+        font-size: 30px;
+    }
+
+    @media @large{
+        font-size: 48px;
+    }
+
+    &.small{
+        font-size: 14px;
+        font-weight: 700;
+        line-height: 1.4;
+        font-family: var(--header_font);
+        color: inherit;
+    
+        @media @tablet{
+            font-size: 18px;
+        }
+    
+        @media @large{
+            font-size: 30px;
+        }
+    }
+
+
+    &.large{
+        font-size: 18px;
+        font-weight: 700;
+        line-height: 1.4;
+        font-family: var(--header_font);
+        color: inherit;
+
+        @media @tablet{
+            font-size: 48px;
+        }
+
+        @media @desktop{
+            font-size: 60px;
+        }
+
+        @media @large{
+            font-size: 100px;
+        }
+    }
+}
+
+
+.text{
+    font-family: var(--text_font);
+    font-size: 12px;
+    color: inherit;
+    font-weight: 400;
+    line-height: 1.4;
+
+    @media @tablet{
+        font-size: 14px;
+    }
+
+    @media @desktop{
+        font-size: 16px;
+    }
+
+    &.small{
+        font-family: var(--text_font);
+        font-size: 11px;
+        font-weight: 400;
+        color: inherit;
+    
+        @media @desktop{
+            font-size: 12px;
+        }
+    
+        @media @large{
+            font-size: 16px;
+        }
+    }
+
+    &.medium{
+        font-family: var(--text_font);
+        font-size: 11px;
+        font-weight: 400;
+        color: inherit;
+    
+        @media @tablet{
+            font-size: 16px;
+        }
+    
+        @media @large{
+            font-size: 24px;
+        }
+    
+    }
+
+    &.large{
+        font-size: 11px;
+        font-weight: 400;
+        font-family: var(--text_font);
+        color: inherit;
+    
+        @media @tablet{
+            font-size: 18px;
+        }
+    
+        @media @desktop{
+            font-size: 24px;
+        }
+    
+        @media @large{
+            font-size: 35px;
+        }
+    }
+
+    &.extralarge{
+        font-size: 16px;
+        font-weight: 400;
+        font-family: var(--text_font);
+        color: inherit;
+    
+        @media @tablet{
+            font-size: 24px;
+        }
+    
+        @media @large{
+            font-size: 36px;
+        }
+    }
+}
+
+.link{
+    .text.small;
+    color: var(--blue_color);
+}
+
+// .list{
+
+//     &__item{
+    
+//         &:last-child{
+//             margin-bottom: 0;
+//         }
+    
+//     }
+// }
+
+/* **************************** fonts **************************** */
+
+// .AustinCyr{
+//     font-family: AustinCyr  !important;
+// }
+
+// .Lora{
+//     font-family: Lora  !important;
+// }
+
+// .BebasNeue{
+//     font-family: BebasNeue  !important;
+// }
+
+/* **************************** ./fonts **************************** */
+
+/* **************************** services common styles **************************** */
+
+.extend{
+    &_button{
+        cursor: pointer;
+
+        &.hidden{
+            display: none;
+        }
+
+    }
+
+    &_block{
+        // display: none;
+        max-height: 0px;
+        overflow: hidden;
+        transition: max-height ease-in-out 300ms;
+        
+        &.shown{
+            display: block;
+            max-height: 300vh;
+        }
+    }
+}
+
+/* **************************** ./services common styles **************************** */
+/* **************************** mixins **************************** */
+
 
 .bold{
-	font-weight: 700;
+    font-weight: 700 !important;
 }
 
 
-
-.circle_img{
-	width: var(--diametr);
-	height: var(--diametr);
-	min-width: var(--diametr);
-	min-height: var(--diametr);
-	max-width: var(--diametr);
-	max-height: var(--diametr);
+.ttu{
+	text-transform: uppercase;
 }
 
+.center{
+    text-align: center !important;
+}
 
-/* **************************** ./containers **************************** */
-
+.no-margin{
+    margin: 0 !important;
+}
+/* **************************** ./mixins **************************** */

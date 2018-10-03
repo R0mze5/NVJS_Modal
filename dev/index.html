@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, maximum-scale=1">
+  <title>NVJS_Modal</title>
+  <link rel="shortcut icon" href="./dist/images/favicon/favicon.ico">
+  <link href="./dist/css/main.css" rel="stylesheet">
+  <link href="./dist/css/NVJS_Modal.css" rel="stylesheet">
+</head>
+
+<body>
+  <div class="button dark_btn show_modal">show modal</div>
+
+  <div class="modal" data-call="modal">
+    <div class="modal__container">
+      <div class="modal__close">
+        <svg xmlns="http://www.w3.org/2000/svg">
+          <use xlink:href="#svg-close"></use>
+        </svg>
+      </div>
+      <h1>Modal title</h1>
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident quia enim, eos esse expedita repellat sed
+        voluptatibus similique beatae quae magni totam repellendus, voluptatem adipisci, commodi optio ratione.
+        Possimus, cumque.</p>
+    </div>
+  </div>
+
+  <div class="svg-root" style="position: absolute; width: 0; height: 0; visibility: hidden;">
+    <svg xmlns="http://www.w3.org/2000/svg" width="0" height="0" display="none" aria-hidden="true">
+      <symbol id="svg-close" viewbox="0 0 21 21">
+        <title>close</title>
+        <path d="M2.592.044l18.364 18.364-2.548 2.548L.044 2.592z" />
+        <path d="M0 18.364L18.364 0l2.548 2.548L2.548 20.912z" />
+      </symbol>
+    </svg>
+  </div>
+
+  
+  <script src="./dist/js/NVJS_Modal.js"></script>
+
+  <script>
+    new NVJSModal('.modal[data-call="modal"]', {
+      modalShowClass: 'open',
+      modalShowButtons: '.show_modal',
+      modalBody: '.modal__container',
+      lockBody: true,
+      modalCloseButton: '.modal__close'
+    });
+  </script>
+</body>
+
+</html>
